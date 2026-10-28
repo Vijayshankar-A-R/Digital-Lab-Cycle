@@ -17,29 +17,21 @@ endmodule
 module mux_tb;
 	reg y, s1, s0;
 	wire a, b, c, d;
-
 	dmux uut(a, b, c, d, s1, s0, y);
 
 	initial begin
 		$dumpfile("wave.vcd");
 		$dumpvars(0, mux_tb);
-
 		y = 1;
 		$display("Y: %b", y);
-
 		$display("\nS1\tS0\tA\tB\tC\tD");
 		$monitor("%b\t%b\t%b\t%b\t%b\t%b", s1, s0, a, b, c, d);
-
 		s1 = 0;
 		s0 = 0; #2;
-
 		s0 = 1; #2;
-
 		s1 = 1;
 		s0 = 0; #2;
-
 		s0 = 1; #2;
-
 		$finish;
 	end
 endmodule
